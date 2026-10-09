@@ -46,7 +46,7 @@ class TextCommands(commands.Cog):
 	@app_commands.command(description='Author information')
 	@app_commands.checks.cooldown(1, 300, key=lambda i: (i.guild_id, i.user.id))
 	async def author(self, interaction: discord.Interaction) -> None:
-		await interaction.response.send_message(embed=accent_embed('FO-BoT was coded by **FO-nTTaX**'))
+		await interaction.response.send_message(embed=accent_embed('FO-BoT was coded by <:fo:1543364883200999525> **FO-nTTaX**'))
 
 	@author.error
 	async def on_author_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError) -> None:
