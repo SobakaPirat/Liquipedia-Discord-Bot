@@ -5,7 +5,7 @@
 from __future__ import annotations
 
 import logging
-from datetime import date, time
+from datetime import UTC, date, datetime, time
 from typing import TYPE_CHECKING
 
 import discord
@@ -78,9 +78,9 @@ class WikiBirthday(commands.Cog):
 					return channel
 		return None
 
-	@tasks.loop(time=time(hour=0, minute=0))
+	@tasks.loop(time=time(hour=0, minute=0, tzinfo=UTC))
 	async def birthday_check(self) -> None:
-		today = date.today()
+		today = datetime.now(UTC).date()
 		if today == self._last_check_date:
 			return
 		self._last_check_date = today
